@@ -9,7 +9,7 @@
   'use strict';
 
   const CONTENT_BASE = (document.currentScript && document.currentScript.dataset.content) || 'content/';
-  const BUILD = '2026-11-17';           // shown under Progress so you can tell which version is running
+  const BUILD = '2026-11-17b';           // shown under Progress so you can tell which version is running
   const FORMAT = 1;                       // progress format version; bump + migrate() on change
   const STORE_KEY = 'hospes.progress';
   const INTERVALS = [0, 1, 2, 4, 8, 16, 32, 64]; // Leitner box → days until next review
@@ -392,13 +392,37 @@
     const file = course && registry.audio[course.id] && registry.audio[course.id][audioKey(text)];
     const viaVoice = () => {
       if (!hasSpeech()) { toast('Audio is not available on this device.'); done(); return; }
-      try {
-        const u = new SpeechSynthesisUtterance(text);
-        u.lang = course.tts; u.rate = rate.tts;
-        const v = pickVoice(); if (v) u.voice = v;
-        u.onend = () => done(); u.onerror = () => done();
-        speechSynthesis.speak(u);
-      } catch (e) { toast('Audio is not available on this device.'); done(); }
+      // iOS Safari quirks handled here: speak() straight after cancel() can be dropped, a paused engine stays silent, and
+      // a listed voice may be unusable (not fully downloaded). If nothing starts within 2.5 s, retry once with the
+      // phone's default voice for the language and record what happened under Progress → Problems recorded.
+      const attempt = (useVoice) => {
+        let started = false, finished = false;
+        const end = () => { if (!finished) { finished = true; clearTimeout(dog); done(); } };
+        let dog = 0;
+        try {
+          const u = new SpeechSynthesisUtterance(text);
+          u.lang = course.tts; u.rate = rate.tts;
+          const v = useVoice ? pickVoice() : null; if (v) u.voice = v;
+          u.onstart = () => { started = true; };
+          u.onend = end;
+          u.onerror = ev => {
+            const err = ev && ev.error;
+            if (err === 'canceled' || err === 'interrupted') { end(); return; }
+            logError('Speech error: ' + err + ' · voice ' + (v ? v.name + ' / ' + v.voiceURI : 'default'), 'speak');
+            if (useVoice && !started && !finished) { finished = true; clearTimeout(dog); attempt(false); return; }
+            toast('The phone could not play this (' + (err || 'unknown') + '). Check the volume and the silent switch.'); end();
+          };
+          dog = setTimeout(() => {
+            if (started || finished) return;
+            logError('Speech did not start within 2.5 s · voice ' + (v ? v.name + ' / ' + v.voiceURI : 'default') + ' · speaking=' + speechSynthesis.speaking + ' paused=' + speechSynthesis.paused, 'speak');
+            finished = true; try { speechSynthesis.cancel(); } catch (e) {}
+            if (useVoice && v) { toast('That voice did not respond; trying the default French voice.'); setTimeout(() => attempt(false), 80); }
+            else { toast('No sound. Check the volume and the silent switch (the one on the side of the phone).'); done(); }
+          }, 2500);
+          setTimeout(() => { try { if (speechSynthesis.paused) speechSynthesis.resume(); speechSynthesis.speak(u); } catch (e) { logError(e, 'speak'); end(); } }, 60);
+        } catch (e) { logError(e, 'speak'); toast('Audio is not available on this device.'); end(); }
+      };
+      attempt(true);
     };
     if (!file) { viaVoice(); return; }
     try {

@@ -15,7 +15,7 @@ const voices = [
   { name: 'Daniel', lang: 'en-GB', voiceURI: 'com.apple.voice.compact.en-GB.Daniel', localService: true }];
 window.SpeechSynthesisUtterance = function (t) { this.text = t; };
 Object.defineProperty(window, 'speechSynthesis', { configurable: true, value: { getVoices: () => voices, cancel() {}, addEventListener() {},
-  speak(u) { window.__spoken.push({ text: u.text, voice: u.voice && u.voice.name, rate: u.rate }); setTimeout(() => u.onend && u.onend(), 20); } } });
+  speak(u) { window.__spoken.push({ text: u.text, voice: u.voice && u.voice.name, rate: u.rate }); setTimeout(() => u.onstart && u.onstart(), 5); setTimeout(() => u.onend && u.onend(), 20); } } });
 """
 ld = """async () => { const t = await (await fetch('content/french/unit-01.js')).text(); let L;
   const H = { addLecture: (c, l) => { L = l; } }; new Function('Hospes', t)(H); return L; }"""
@@ -82,7 +82,7 @@ with sync_playwright() as p:
     bad, listened = [], 0
     for i, item in enumerate(L['exercises']):
         if item['type'] == 'listen':
-            sp = pg.evaluate('window.__spoken'); listened += 1 if sp and sp[-1]['text'] == item['text'] else 0
+            pg.wait_for_timeout(150); sp = pg.evaluate('window.__spoken'); listened += 1 if sp and sp[-1]['text'] == item['text'] else 0
             pg.screenshot(path=S + f'ex_listen_{i}.png')
         fb = answer(item)
         if fb != 'Correct.': bad.append((item['id'], fb))
@@ -120,7 +120,7 @@ with sync_playwright() as p:
     pg.click('[data-go=cards]'); pg.click('[data-deck=phrases]')
     print('phrases deck new cards', pg.locator('.stat b').nth(1).inner_text())
     pg.evaluate('window.__spoken = []'); pg.click('[data-startcards]')
-    front = pg.locator('.card .front').inner_text(); sp = pg.evaluate('window.__spoken')
+    front = pg.locator('.card .front').inner_text(); pg.wait_for_timeout(150); sp = pg.evaluate('window.__spoken')
     print('card played on show:', bool(sp) and sp[-1]['text'] == front.replace(' ', ' '))
     pg.screenshot(path=S + 'card.png')
     for k in range(3): pg.click('[data-flip]'); pg.click('[data-grade=good]')

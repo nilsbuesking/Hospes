@@ -5,7 +5,7 @@
  * Pictures and fonts from other sites (Wikimedia Commons, Google Fonts) go into a separate cache, MEDIA, which
  * survives version changes, so a picture seen once online stays available offline. Requests to GitHub (the automatic
  * backup) are never cached. */
-const VERSION = 'hospes-v1';
+const VERSION = 'hospes-v2';
 const MEDIA = 'hospes-media';
 const MEDIA_MAX = 400;   // entries; the oldest are removed beyond this
 const CORE = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest',
