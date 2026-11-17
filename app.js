@@ -9,7 +9,7 @@
   'use strict';
 
   const CONTENT_BASE = (document.currentScript && document.currentScript.dataset.content) || 'content/';
-  const BUILD = '2026-11-17b';           // shown under Progress so you can tell which version is running
+  const BUILD = '2026-11-17c';           // shown under Progress so you can tell which version is running
   const FORMAT = 1;                       // progress format version; bump + migrate() on change
   const STORE_KEY = 'hospes.progress';
   const INTERVALS = [0, 1, 2, 4, 8, 16, 32, 64]; // Leitner box → days until next review
@@ -1176,6 +1176,7 @@
         <select class="field" id="sVoice"><option value="">Best available${!chosen && cur ? ` (${esc(cur.name)})` : ''}</option>${vs.map(v => `<option value="${esc(v.voiceURI)}" ${chosen === v.voiceURI ? 'selected' : ''}>${esc(label(v))}</option>`).join('')}</select></div>
       <div class="setting"><label for="sRate">Speed</label><select class="field" id="sRate"><option value="normal" ${P.settings.speechRate === 'normal' ? 'selected' : ''}>Normal</option><option value="slow" ${P.settings.speechRate === 'slow' ? 'selected' : ''}>Slow</option></select></div>
       <div class="setting"><label>Try it</label>${speakBtn(course.sample || course.native, 'Play a sentence')}</div>
+      ${hasSpeech() ? (() => { const all = speechSynthesis.getVoices(); return `<details class="small" style="margin:10px 0 0"><summary>Every voice this browser exposes (${all.length})</summary><pre style="white-space:pre-wrap;font-size:12px;user-select:all">${esc(all.length ? all.map(v => v.name + ' | ' + v.lang + (v.localService ? ' | local' : ' | remote')).join('\n') : 'None reported yet. Open this page again in a few seconds.')}</pre></details>`; })() : ''}
       <p class="small muted" style="margin:8px 0 0">Better voices: iPhone Settings → Accessibility → Spoken Content → Voices → ${esc(course.name)}, and download a voice marked Enhanced or Premium (for France, not Canada). It then appears in the list above.${nFiles ? ` ${nFiles} recorded audio files are used where available; the voice reads the rest.` : ''}</p>
     </div>`;
   }
