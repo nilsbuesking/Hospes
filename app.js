@@ -9,7 +9,7 @@
   'use strict';
 
   const CONTENT_BASE = (document.currentScript && document.currentScript.dataset.content) || 'content/';
-  const BUILD = '2026-11-17c';           // shown under Progress so you can tell which version is running
+  const BUILD = '2026-11-18';           // shown under Progress so you can tell which version is running
   const FORMAT = 1;                       // progress format version; bump + migrate() on change
   const STORE_KEY = 'hospes.progress';
   const INTERVALS = [0, 1, 2, 4, 8, 16, 32, 64]; // Leitner box → days until next review
@@ -373,6 +373,17 @@
     return list.find(v => v.voiceURI === chosen) || list.slice().sort((a, b) => voiceScore(b) - voiceScore(a))[0];
   }
   if (hasSpeech()) speechSynthesis.addEventListener && speechSynthesis.addEventListener('voiceschanged', () => { if (ui.view === 'progress') { const y = window.scrollY; render(); window.scrollTo(0, y); } });
+  // iOS Safari often reports no voices on first asking, and does not always fire 'voiceschanged' afterwards. Ask again
+  // for a few seconds, on load and whenever the Progress page is opened, and redraw if the count has changed.
+  let voiceCount = -1, voicePolls = 0;
+  function pollVoices(reset) {
+    if (!hasSpeech()) return;
+    if (reset) voicePolls = 0;
+    const n = speechSynthesis.getVoices().length;
+    if (n !== voiceCount) { const was = voiceCount; voiceCount = n; if (was !== -1 && ui.view === 'progress') { const y = window.scrollY; render(); window.scrollTo(0, y); } }
+    if (++voicePolls < 20) setTimeout(() => pollVoices(false), 700);
+  }
+  pollVoices(true);
   const SPEAKER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 8.8a4.5 4.5 0 0 1 0 6.4M18.2 6.2a8.2 8.2 0 0 1 0 11.6"/></svg>';
   function speakBtn(text, label) {
     if (!text || !canHear()) return '';
@@ -1100,6 +1111,7 @@
 
   // ----- progress & settings -----
   function viewProgress() {
+    if (voicePolls >= 20) setTimeout(() => pollVoices(true), 0);
     const c = courseP(course.id);
     const boxes = Array(8).fill(0); shownStates().forEach(s => boxes[s.box]++);
     const max = Math.max(1, ...boxes);
