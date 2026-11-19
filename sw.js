@@ -5,11 +5,11 @@
  * Pictures and fonts from other sites (Wikimedia Commons, Google Fonts) go into a separate cache, MEDIA, which
  * survives version changes, so a picture seen once online stays available offline. Requests to GitHub (the automatic
  * backup) are never cached. */
-const VERSION = 'hospes-v7';
+const VERSION = 'hospes-v8';
 const MEDIA = 'hospes-media';
 const MEDIA_MAX = 400;   // entries; the oldest are removed beyond this
 const CORE = ['./', 'index.html', 'app.css', 'app.js', 'manifest.webmanifest',
-  'content/catalogue.js', 'content/french/unit-01.js', 'content/french/unit-02.js', 'content/french/unit-03.js', 'content/french/unit-04.js', 'content/french/pages.js', 'icons/icon-180.png', 'icons/icon-192.png'];
+  'content/catalogue.js', 'content/french/unit-01.js', 'content/french/unit-02.js', 'content/french/unit-03.js', 'content/french/unit-04.js', 'content/french/unit-05.js', 'content/french/pages.js', 'icons/icon-180.png', 'icons/icon-192.png'];
 // Recorded audio (content/<course>/audio/…) is not part of a version: each file is kept once it has been played or
 // downloaded (cache AUDIO, which survives version changes), so new recordings never force a large update.
 const AUDIO = 'hospes-audio';

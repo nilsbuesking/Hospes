@@ -18,9 +18,8 @@ Hospes.setCatalogue([
     cardDir: 'both',
     // treated as equal when checking answers
     spelling: [['œ', 'oe']],
-    lectures: ['french/unit-01.js', 'french/unit-02.js', 'french/unit-03.js', 'french/unit-04.js'],
+    lectures: ['french/unit-01.js', 'french/unit-02.js', 'french/unit-03.js', 'french/unit-04.js', 'french/unit-05.js'],
     planned: [
-      'Le vin (II): regions, appellations, tasting words',
       'À l’hôtel',
       'Au marché et dans les magasins',
       'Se déplacer: transport and directions',

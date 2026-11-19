@@ -105,3 +105,28 @@ Facts in the background notes
 
 Pronunciation
 - [ ] `[buʁɡɔɲ]`, `[ʃɑ̃paɲ]`, `[pojak]`, `[puji]`, `[viɲəʁɔ̃]`, `[sepaʒ]`, `[tiʁbuʃɔ̃]`: standard, but worth a glance.
+
+### Unit 5: Le vin (II)
+
+Usage and register
+- [ ] ⚑ `la robe`, `le nez`, `en bouche`, `une belle longueur` as standard tasting language.
+- [ ] ⚑ `C’est du chenin` vs `c’est un chenin`: both natural?
+- [ ] ⚑ `Je vous fais deux cartons ?` and `Vous pouvez me faire un carton ?` for making up cases.
+- [ ] ⚑ `Je n’y connais pas grand-chose` as a natural admission.
+- [ ] ⚑ `Il faut le carafer` (decant): common, or `le décanter`?
+- [ ] ⚑ `septante`, `nonante` (Belgium, Switzerland); `huitante` (parts of Switzerland, e.g. Vaud).
+
+Facts in the background notes
+- [ ] ⚑ Region sketch (left/right bank grapes; Burgundy subregions; ten Beaujolais crus; north/south Rhône; Loire grapes; Alsace; Champagne grapes incl. Meunier; south and south-west examples).
+- [ ] ⚑ Label: “Appellation … Contrôlée” older wording; AOP; mis en bouteille au domaine/château; EU leaf and AB logos.
+- [ ] ⚑ Cru: Burgundy grand > premier; Bordeaux 1855 classification (Médoc and Sauternes); Beaujolais ten crus.
+- [ ] ⚑ Vendanges roughly September to early October.
+- [ ] ⚑ UK allowance from the EU: 18 litres of still wine (check current figure on gov.uk).
+- [ ] ⚑ Biodynamics certifications Demeter, Biodyvin; voluntary “Vin méthode nature” label (2020); “vin nature” not legally defined.
+- [ ] ⚑ Vouvray made only from Chenin Blanc; made dry to sweet and sparkling.
+- [ ] ⚑ Beaumes-de-Venise: “Venise” from the Comtat Venaissin (Unit 4 note).
+- [ ] ⚑ Barrique = 225 litres.
+
+Pronunciation
+- [ ] ⚑ `Meursault` [mœʁso]; `Sauternes` [sotɛʁn]; `Pomerol` [pɔmʁɔl]; `Muscadet` [myskadɛ].
+- [ ] `[milezim]`, `[vɑ̃dɑ̃ʒ]`, `[katʁəvɛ̃œ̃]`, `[sɔməlje]`: standard, but worth a glance.
