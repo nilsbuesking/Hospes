@@ -56,3 +56,28 @@ Pronunciation
 - [ ] ⚑ `porc` [pɔʁ] with silent c; `persil` with or without final l.
 - [ ] ⚑ `cinq` “increasingly keeps its [k]” before consonants.
 - [ ] `[ɑ̃tʁəkot]`, `[kɥisɔ̃]`, `[sɛɲɑ̃]`, `[aɲo]`, `[butɛj]`, `[desɛʁ]`: standard, but worth a glance.
+
+### Unit 3: Au restaurant (II)
+
+Usage and register
+- [ ] ⚑ `C’est moi qui invite` / `Je vous invite` for “it’s on me”.
+- [ ] ⚑ `Il nous manque une fourchette` as the natural way to say a fork is missing.
+- [ ] ⚑ `Vous prenez la carte ?` for “do you take cards?”.
+- [ ] ⚑ `les fruits à coque` as the allergen term; `les noix` used loosely for nuts in general.
+- [ ] ⚑ `végan`/`végane` vs `végétalien(ne)`: which is more usual in restaurants now? Pronunciation [vegɑ̃] or [vegan].
+- [ ] ⚑ `c’est trop bon` as informal praise, mostly among young people.
+- [ ] ⚑ `un ticket` for a till receipt; `une facture` for a business invoice.
+
+Facts in the background notes
+- [ ] ⚑ Bill never brought unasked, except where there are several sittings or a busy lunch.
+- [ ] ⚑ Some restaurants dislike splitting the bill item by item for large groups.
+- [ ] ⚑ Tip suggestions now appearing on card terminals in tourist areas and some Paris restaurants.
+- [ ] ⚑ EU Regulation 1169/2011: information on 14 allergens for non-prepacked food; in France it must be available in writing.
+- [ ] ⚑ Since 2021 restaurants must provide a container for leftovers on request (anti-food-waste law; confirm the law and date).
+- [ ] ⚑ Parmesan traditionally made with animal rennet.
+- [ ] ⚑ VAT rates: 10 % restaurant food and soft drinks, 20 % alcoholic drinks (as of 2026).
+- [ ] ⚑ Canuts: Lyon silk weavers of the Croix-Rousse, revolts in the 1830s (1831, 1834).
+
+Pronunciation
+- [ ] ⚑ `je ne sais pas` reduced to [ʃepa] in fast speech.
+- [ ] `[kɥijɛʁ]`, `[glytɛn]`, `[puʁbwaʁ]`, `[ɑ̃n‿ɛspɛs]`, `[veʒetaʁjɛn]`: standard, but worth a glance.

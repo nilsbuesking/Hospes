@@ -19,6 +19,10 @@ Object.defineProperty(window, 'speechSynthesis', { configurable: true, value: { 
 """
 ld = """async () => { const t = await (await fetch('content/french/unit-01.js')).text(); let L;
   const H = { addLecture: (c, l) => { L = l; } }; new Function('Hospes', t)(H); return L; }"""
+ALLP = """async () => { let cat; const H = { setCatalogue: c => { cat = c; }, setShared() {} };
+  new Function('Hospes', await (await fetch('content/catalogue.js')).text())(H); let n = 0;
+  for (const f of cat[0].lectures) { let L; new Function('Hospes', await (await fetch('content/' + f)).text())({ addLecture: (c, l) => { L = l; } }); n += (L.phrases || []).length; }
+  return n; }"""
 errs = []
 with sync_playwright() as p:
     b = p.chromium.launch(); pg = b.new_page(viewport={'width': 390, 'height': 844}, device_scale_factor=2)
@@ -38,15 +42,15 @@ with sync_playwright() as p:
     print('wide sections:', [k for k, v in widths.items() if v > 390])
     # phrases: one speaker per phrase, Play all goes through every phrase
     pg.click('.chip[data-section=phrases]')
-    print('phrase speakers', pg.locator('.pitem .speak').count(), f"({len(L['phrases'])} expect {len(L['phrases'])})")
+    print('phrase speakers', pg.locator('.pitem .speak').count(), f"(expect {len(L['phrases'])})")
     pg.evaluate('window.__spoken = []'); pg.click('[data-playall]'); pg.wait_for_timeout(len(L['phrases']) * 520 + 600)
     print('played all phrases', len(pg.evaluate('window.__spoken')), f"(expect {len(L['phrases'])})")
     voice = pg.evaluate('window.__spoken[0] && window.__spoken[0].voice'); print('voice used', voice, '(Audrey expected)')
     if voice != 'Audrey': print('FAIL best voice not chosen')
     # dialogue: English hidden by default, shown on request, plays line by line
     pg.click('.chip[data-section=dialogue]')
-    print('english lines hidden', pg.locator('.den').count(), '(0 expect 0)')
-    pg.click('[data-showen="1"]'); print('english lines shown', pg.locator('.den').count(), f"({len(L['dialogue']['lines'])} expect {len(L['dialogue']['lines'])})")
+    print('english lines hidden', pg.locator('.den').count(), '(expect 0)')
+    pg.click('[data-showen="1"]'); print('english lines shown', pg.locator('.den').count(), f"(expect {len(L['dialogue']['lines'])})")
     pg.screenshot(path=S + 'dialogue_en.png', full_page=True)
     pg.evaluate('window.__spoken = []'); pg.click('[data-slow]'); pg.click('[data-playall]'); pg.wait_for_timeout(len(L['dialogue']['lines']) * 520 + 600)
     sp = pg.evaluate('window.__spoken')
@@ -58,7 +62,7 @@ with sync_playwright() as p:
     print('reading words', pg.locator('.reading .w').count())
     for q in L['reading']['questions']:
         pg.click(f'[data-inline="{q["id"]}"][data-i="{q["answer"]}"]')
-    print('reading answers marked right', pg.locator('.opt.right').count(), f"({len(L['reading']['questions'])} expect {len(L['reading']['questions'])})")
+    print('reading answers marked right', pg.locator('.opt.right').count(), f"(expect {len(L['reading']['questions'])})")
 
     def answer(item):
         t = item['type']
@@ -125,11 +129,11 @@ with sync_playwright() as p:
     pg.screenshot(path=S + 'card.png')
     for k in range(3): pg.click('[data-flip]'); pg.click('[data-grade=good]')
     # phrasebook search
-    pg.click('[data-go=ref]'); print('phrasebook phrases', pg.locator('.pitem').count(), f"({len(L['phrases'])} expect {len(L['phrases'])})")
-    pg.fill('#phsearch', 'addition'); pg.wait_for_timeout(300); print('search addition', pg.locator('.pitem').count(), '(1 expect 1)')
-    pg.fill('#phsearch', 'bill'); pg.wait_for_timeout(300); print('search bill', pg.locator('.pitem').count(), '(1 expect 1)')
+    pg.click('[data-go=ref]'); print('phrasebook phrases', pg.locator('.pitem').count(), f"(expect {pg.evaluate(ALLP)})")
+    pg.fill('#phsearch', 'monnaie'); pg.wait_for_timeout(300); print('search monnaie', pg.locator('.pitem').count(), '(expect 1)')
+    pg.fill('#phsearch', 'the change'); pg.wait_for_timeout(300); print('search change', pg.locator('.pitem').count(), '(expect 1)')
     pg.screenshot(path=S + 'phrasebook.png')
-    pg.click('[data-refpage=fr-sounds]'); print('sounds page width', pg.evaluate('document.documentElement.scrollWidth'), '(390 expect 390)')
+    pg.click('[data-refpage=fr-sounds]'); print('sounds page width', pg.evaluate('document.documentElement.scrollWidth'), '(expect 390)')
     pg.click('[data-refpage=tables]'); pg.screenshot(path=S + 'tables.png')
     # progress: audio panel lists French voices only, no novelty voice
     pg.click('[data-go=progress]')

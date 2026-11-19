@@ -40,10 +40,11 @@ with sync_playwright() as p:
     pg.click('[data-go=progress]'); pg.click('#syncsetup summary')
     pg.screenshot(path='/tmp/hospes-shots/sync_setup.png', full_page=True)
     pg.fill('#synctoken', 'github_pat_TEST'); pg.click('[data-syncconnect]'); pg.wait_for_timeout(800)
-    print('gists created', len(state['gists']), '(1 expect 1)')
+    print('gists created', len(state['gists']), '(expect 1)')
     g = state['gists'][0]; content = g['files']['hospes-progress.json']
     print('gist private', g['public'] is False)
-    print('token in backup:', 'github_pat_TEST' in content, '(False expected)')
+    leak = 'github_pat_TEST' in content; print('token in backup:', leak)
+    if leak: print('FAIL token found in backup file')
     print('progress in backup:', '"fr-01"' in content)
     print('authorised calls', all(c[2] == 'Bearer github_pat_TEST' for c in calls))
     print('status shown:', 'Last backed up' in pg.locator('#syncsetup').inner_text())
@@ -63,11 +64,11 @@ with sync_playwright() as p:
     # phone 2: fresh install, connect → the backup is found and offered for restore
     ctx, pg = phone()
     pg.click('[data-go=progress]'); pg.click('#syncsetup summary'); pg.fill('#synctoken', 'github_pat_TEST'); pg.click('[data-syncconnect]'); pg.wait_for_timeout(800)
-    print('restore offered:', pg.locator('#confirmimport').count(), '(1 expect 1)')
+    print('restore offered:', pg.locator('#confirmimport').count(), '(expect 1)')
     pg.click('[data-doimport]'); pg.wait_for_timeout(400)
     pg.click('[data-go=home]')
     print('restored progress:', '2 of' not in pg.locator('main').inner_text() and pg.locator('.dots i.on').count() >= 2)
-    print('gists still', len(state['gists']), '(1 expect 1)')
+    print('gists still', len(state['gists']), '(expect 1)')
     ctx.close()
 
     # phone 3: progress already on the phone, a backup exists → paused, nothing overwritten until chosen

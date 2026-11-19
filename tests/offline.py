@@ -19,8 +19,8 @@ try:
         ctx.set_offline(True)
         pg.reload(); pg.wait_for_timeout(800)
         pg.click('text=Start unit'); pg.click('.chip[data-section=dialogue]')
-        print('dialogue offline lines', pg.locator('.dline').count(), '(15 expect 15)')
-        print('audio offline', pg.evaluate("fetch('content/french/audio/_test.wav').then(r => r.status).catch(() => 'failed')"), '(200 expected)')
+        print('dialogue offline lines', pg.locator('.dline').count(), '(expect 15)')
+        st = pg.evaluate("fetch('content/french/audio/_test.wav').then(r => r.status).catch(() => 0)"); print('audio offline', st, '(expect 200)')
         print('caches', pg.evaluate("caches.keys()"))
         b.close()
 finally:
