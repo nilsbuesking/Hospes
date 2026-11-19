@@ -81,3 +81,27 @@ Facts in the background notes
 Pronunciation
 - [ ] ⚑ `je ne sais pas` reduced to [ʃepa] in fast speech.
 - [ ] `[kɥijɛʁ]`, `[glytɛn]`, `[puʁbwaʁ]`, `[ɑ̃n‿ɛspɛs]`, `[veʒetaʁjɛn]`: standard, but worth a glance.
+
+### Unit 4: Le vin (I)
+
+Usage and register
+- [ ] ⚑ `un ballon de rouge` as older, popular café French.
+- [ ] ⚑ `Qu’est-ce que je vous sers ?` as the bar opening; `Bonne dégustation !` from wine-bar staff.
+- [ ] ⚑ `une coupe de champagne` regardless of glass shape.
+- [ ] ⚑ `À la vôtre !` / `À la tienne !`; eye contact when clinking, “bad luck” in jest.
+- [ ] ⚑ Wine names as common nouns: `un chablis`, `un bourgogne`, lower case, masculine (capitals also seen).
+- [ ] ⚑ `moelleux` pronounced [mwalø].
+- [ ] ⚑ `riesling` said [ʁislin] or [ʁizliŋ].
+
+Facts in the background notes
+- [ ] ⚑ AOC now usually AOP; Alsace labelled by grape; IGP / Vin de France often by grape.
+- [ ] ⚑ Glass 12 or 15 cl; pichet 25 / 50 cl; demi-bouteille 37,5 cl.
+- [ ] ⚑ Sparkling sweetness scale: brut < extra-dry < sec < demi-sec < doux.
+- [ ] ⚑ Crémant regions: Alsace, Burgundy, Loire and others.
+- [ ] ⚑ Kir named after Félix Kir, post-war mayor of Dijon; traditionally with Bourgogne aligoté.
+- [ ] ⚑ Muscat de Beaumes-de-Venise: vin doux naturel (mutage); “Venise” from the Comtat Venaissin.
+- [ ] ⚑ Reference table of place → grape (chablis, mâcon, sancerre, bourgogne, beaujolais, côtes-du-rhône, bordeaux).
+- [ ] ⚑ Wine-bar prices by the glass (6–12 €) plausible for Beaune in 2026.
+
+Pronunciation
+- [ ] `[buʁɡɔɲ]`, `[ʃɑ̃paɲ]`, `[pojak]`, `[puji]`, `[viɲəʁɔ̃]`, `[sepaʒ]`, `[tiʁbuʃɔ̃]`: standard, but worth a glance.
