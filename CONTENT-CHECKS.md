@@ -29,3 +29,30 @@ Pronunciation (IPA in the vocabulary)
 - [ ] `[kʁwasɑ̃]`, `[kɔ̃twaʁ]`, `[ɛ̃fyzjɔ̃]`, `[sɛʁvœʁ, sɛʁvøz]`, `[mɔnɛ]`, `[peje]`: standard, but worth a glance.
 - [ ] ⚑ `un` [œ̃] “mostly said like in [ɛ̃] in Paris and much of the north”.
 - [ ] ⚑ `neuf euros` with [v]: [nœvøʁo].
+
+### Unit 2: Au restaurant (I)
+
+Usage and register
+- [ ] ⚑ `la formule` as the usual word for a short (lunch) set menu, distinct from `le menu`.
+- [ ] ⚑ `Quelle cuisson ?` as the waiter’s question; answering `saignant` (masculine form) whatever the meat, e.g. for `l’entrecôte` (f.).
+- [ ] ⚑ `à point` covering “medium-rare to medium”; French kitchens cooking “a degree less” than British ones (stated as widely reported).
+- [ ] ⚑ `à point, plutôt bien cuit` as an understood in-between request.
+- [ ] ⚑ `Je peux avoir des frites à la place ?` and `C’est servi avec quoi ?` as natural spoken forms.
+- [ ] ⚑ `Tout se passe bien ?` as the waiter’s check during the meal.
+- [ ] ⚑ `Pour madame` when ordering for one’s partner: still normal and polite.
+- [ ] ⚑ `Un pichet de vingt-cinq ou de cinquante centilitres ?`: pichets usually 25 / 50 cl (sometimes 46 cl “pot lyonnais” in Lyon).
+- [ ] ⚑ `Quel vin vous me conseillez ?` (test t3): colloquial word order; acceptable, or prefer `Quel vin me conseillez-vous ?`
+
+Facts in the background notes
+- [ ] ⚑ Lunch roughly 12–14 h, dinner from about 19 h 30; kitchens often closed in between; later in the south and in big cities.
+- [ ] ⚑ Bread free and placed on the tablecloth; butter the exception in an ordinary restaurant.
+- [ ] ⚑ British usage of “entrée” mostly follows the French (starter).
+- [ ] ⚑ `café gourmand` as a popular espresso-with-small-desserts option.
+- [ ] ⚑ Magret normally served pink; chefs reluctant to cook it further.
+- [ ] ⚑ `Entrecôte à la bordelaise` as the Bordeaux speciality.
+- [ ] ⚑ Price board: formule 19,50 € / 24,00 €; plausible for a provincial brasserie in 2026?
+
+Pronunciation
+- [ ] ⚑ `porc` [pɔʁ] with silent c; `persil` with or without final l.
+- [ ] ⚑ `cinq` “increasingly keeps its [k]” before consonants.
+- [ ] `[ɑ̃tʁəkot]`, `[kɥisɔ̃]`, `[sɛɲɑ̃]`, `[aɲo]`, `[butɛj]`, `[desɛʁ]`: standard, but worth a glance.
